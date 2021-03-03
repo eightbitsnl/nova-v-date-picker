@@ -1,23 +1,29 @@
 <template>
   <default-field :field="field" :errors="errors" :show-help-text="showHelpText">
     <template slot="field">
-      <input
+      <v-date-picker></v-date-picker>
+      <!-- <input
         :id="field.name"
         type="text"
         class="w-full form-control form-input form-input-bordered"
         :class="errorClasses"
         :placeholder="field.name"
         v-model="value"
-      />
+      /> -->
     </template>
   </default-field>
 </template>
 
 <script>
 import { FormField, HandlesValidationErrors } from 'laravel-nova'
+import DatePicker from 'v-calendar/lib/components/date-picker.umd'
 
 export default {
   mixins: [FormField, HandlesValidationErrors],
+
+  components: {
+    DatePicker
+  },
 
   props: ['resourceName', 'resourceId', 'field'],
 
